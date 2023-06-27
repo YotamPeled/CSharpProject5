@@ -262,12 +262,11 @@ namespace Ex05
         {
             m_ComputerSimulation = true;
             BoardPosition computerPosition = m_Computer.GiveLocation();
+            m_ComputerSimulation = false;
 
             m_Board[computerPosition.Row, computerPosition.Column] = (int)m_Turn;
             OnUpdatePosition(computerPosition, m_Turn);
             placeTileOnBoard(computerPosition);
-
-            m_ComputerSimulation = false;
         }
 
         private void placeTileOnBoard(BoardPosition i_Position)       

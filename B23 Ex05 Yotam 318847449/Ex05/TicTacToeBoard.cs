@@ -7,9 +7,12 @@ namespace Ex05
 {
     class TicTacToeBoard : Form
     {
-        private Button m_HintButton;
-        private Label m_Player1;
-        private Label m_Player2;
+        private Button m_ButtonHint;
+        private Button m_ButtonChangeStartingPlayer;
+        private string m_Player1Name;
+        private string m_Player2Name;
+        private Label m_Player1 = new Label();
+        private Label m_Player2 = new Label();
         private Board m_Board;
         private List<TicTacToeButton> m_BoardButtonsList;
         private const int k_ButtonSize = 100;
@@ -17,9 +20,43 @@ namespace Ex05
 
         public TicTacToeBoard()
         {
-            m_Board = new Board(3);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.Text = "TicTacToeMisere";
+        }
+
+
+
+        private void setGameSpecifications(string i_Player1Name, string i_Player2Name, eOpponent i_Opponent, int i_BoardSize)
+        {
+            if (i_Player1Name == string.Empty)
+            {
+                m_Player1Name = "Player1";
+            }
+            else
+            {
+                m_Player1Name = i_Player1Name;
+            }
+
+            if (i_Player2Name == string.Empty)
+            {
+                m_Player2Name = "Player2";
+            }
+            else
+            {
+                m_Player2Name = i_Player2Name;
+            }
+
+            m_Board = new Board(i_BoardSize);
+            m_Board.Opponent = i_Opponent;             
+        }
+
+        public void initialize(string i_Player1Name, string i_Player2Name, eOpponent i_Opponent, int i_BoardSize)
+        {
+            setGameSpecifications(i_Player1Name, i_Player2Name, i_Opponent, i_BoardSize);
+
             m_BoardButtonsList = new List<TicTacToeButton>(m_Board.Size);
-            m_Board.Opponent = eOpponent.Computer;
 
             m_Board.UpdatePosition += m_BoardButtonList_UpdatePosition;
             m_Board.GameEnd += m_BoardButtonList_GameEnd;
@@ -30,64 +67,89 @@ namespace Ex05
 
         private void initializeBoardComponents()
         {
-            initializeBoardUI(m_Board.Size);
+            initializeTicTacToeButtonsAndBoard(m_Board.Size);
             this.StartPosition = FormStartPosition.CenterScreen;
             int boardHeight = k_ButtonSize * m_Board.Size;
 
-            m_HintButton = new Button
+            m_ButtonHint = new Button
             {
-                Name = "hintButton",
+                Name = "buttonHint",
                 Text = "Hint",
-                Size = new System.Drawing.Size(100, 30),
+                Size = new Size(k_ButtonSize, 30),
                 Location = new Point(this.Left + 10, boardHeight + 15),
                 TabStop = false               
             };
 
-            m_Player1 = new Label
+            m_ButtonChangeStartingPlayer = new Button
             {
-                Name = "player1",
-                Text = "Player 1",
-                AutoSize = true,
-                Width = 100,
-                Location = new Point(m_HintButton.Right + 10, boardHeight + 23),
+                Name = "hintButton",
+                Text = "Change Starting Player",
+                Size = new Size(k_ButtonSize * 3, 30),
+                Location = new Point(this.Left + 10, boardHeight + 50),
+                TabStop = false
             };
 
-            m_Player2 = new Label
-            {
-                Name = m_Board.Opponent == eOpponent.Friend ? "player2" : "Computer",
-                Text = "Player 2",
-                AutoSize = true,
-                Width = 100,
-                Location = new Point(m_Player1.Right, boardHeight + 23)
-            };
+            m_Player1.Name = "player1";
+            m_Player1.AutoSize = true;
+            m_Player1.Width = k_ButtonSize;
+            m_Player1.Location = new Point(m_ButtonHint.Right + 10, boardHeight + 23);
 
+            m_Player2.Name = m_Board.Opponent == eOpponent.Friend ? "player2" : "Computer";
+            m_Player2.AutoSize = true;
+            m_Player2.Width = k_ButtonSize;
+            m_Player2.Location = new Point(m_Player1.Right, boardHeight + 23);
+          
             if (m_Board.Opponent == eOpponent.Friend)
             {
-                m_HintButton.Enabled = false;
+                m_ButtonHint.Enabled = false;
+                m_ButtonHint.MouseHover += m_ButtonHint_MouseHover;
             }
             else
             {
-                m_HintButton.Click += m_HintButton_Click;
+                m_ButtonHint.Click += m_HintButton_Click;
             }
 
+            m_ButtonChangeStartingPlayer.Click += m_ButtonChangeStartingPlayer_Click;
+
             updateLabels();
-            Controls.Add(m_HintButton);
+            Controls.Add(m_ButtonHint);
+            Controls.Add(m_ButtonChangeStartingPlayer);
             Controls.Add(m_Player1);
             Controls.Add(m_Player2);
+        }
+
+        private void m_ButtonHint_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(m_ButtonHint, "No hints when playing against friends");
+        }
+
+        private void m_ButtonChangeStartingPlayer_Click(object sender, EventArgs e)
+        {
+            m_ButtonChangeStartingPlayer.Enabled = false;
+            m_Board.ChangeStartingPlayer();
+            if (m_Board.Opponent == eOpponent.Friend)
+            {
+                swapBoldLabels();
+            }
+            else
+            {
+                m_Board.ComputerTurn();
+            }
         }
 
         private void m_HintButton_Click(object sender, EventArgs e)
         {
             m_HintWasJustUsed = true;
-            m_HintButton.Enabled = false;
+            m_ButtonHint.Enabled = false;
 
             m_Board.doWhenHintIsUsed();
         }
 
-        private void initializeBoardUI(int i_Size)
+        private void initializeTicTacToeButtonsAndBoard(int i_Size)
         {
             int boardWidth = i_Size * k_ButtonSize + 20;
-            int boardHeight = i_Size * k_ButtonSize + 50;
+            int boardHeight = i_Size * k_ButtonSize + 85;
             this.ClientSize = new Size(boardWidth, boardHeight);
 
             for (int row = 0; row < i_Size; row++)
@@ -109,6 +171,8 @@ namespace Ex05
 
         private void boardButton_Click(object sender, EventArgs e)
         {
+            m_ButtonChangeStartingPlayer.Enabled = false;
+
             BoardPosition buttonPosition = (sender as TicTacToeButton).Position;
 
             m_Board.DoWhenButtonWasClicked(buttonPosition);
@@ -186,6 +250,7 @@ namespace Ex05
         private void m_BoardButtonList_GameEnd()
         {
             updateVisualsForEntireBoard();
+            this.Refresh();
             initializeMessageBox();
         }
 
@@ -196,11 +261,11 @@ namespace Ex05
 
             if (endStatus == eStatus.XLost)
             {
-                caption = "X Lost!";
+                caption = $"{m_Player1Name} Lost!";
             }
             else if (endStatus == eStatus.OLost)
             {
-                caption = "O Lost!";
+                caption = $"{m_Player2Name} Lost!";
             }
             else if (endStatus == eStatus.Tie)
             {
@@ -230,16 +295,18 @@ Would you like to play another round?";
             updateLabels();
             if (m_Board.Opponent == eOpponent.Computer)
             {
-                m_HintButton.Enabled = true;
+                m_ButtonHint.Enabled = true;
             }
+
+            m_ButtonChangeStartingPlayer.Enabled = true;
         }
 
         private void updateLabels()
         {
             resetBoldLabel();
-            string player2 = m_Board.Opponent == eOpponent.Friend ? "player2" : "Computer";
-            m_Player1.Text = $@"Player 1: {m_Board.XScore}";
-            m_Player2.Text = $@"{player2}: {m_Board.OScore}";
+ 
+            m_Player1.Text = $@"{m_Player1Name}: {m_Board.XScore}";
+            m_Player2.Text = $@"{m_Player2Name}: {m_Board.OScore}";
         }
 
         private void setButtonVisuals(TicTacToeButton i_Button)
@@ -274,7 +341,10 @@ Would you like to play another round?";
                 i_Button.Enabled = false;
             }
 
-            i_Button.BackColor = default(Color);
+            if (TileType != (int)eTiles.OLost && TileType != (int)eTiles.XLost)
+            {
+                i_Button.BackColor = default(Color);
+            }
         }
 
         private void updateVisualsForEntireBoard()

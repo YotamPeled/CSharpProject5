@@ -84,14 +84,14 @@ namespace Ex05
         private int miniMax(Board i_Board, int i_Depth, int i_Alpha = int.MinValue, int i_Beta = int.MaxValue)
         {
             // couldn't make method work with one return
-            if (i_Board.Status != eStatus.Ongoing ||
-               (m_Board.Size >= 4 && i_Depth == 3 && m_Board.EmptyPositions.Count > 10) ||
+            if (i_Board.Status != eStatus.Ongoing || (m_Board.Size == 4 && i_Depth == 5 && m_Board.EmptyPositions.Count > 10) ||
+               (m_Board.Size > 4 && i_Depth == 3 && m_Board.EmptyPositions.Count > 10) ||
                (m_Board.EmptyPositions.Count <= 10 && i_Depth == m_Board.EmptyPositions.Count))// can sacrifise play accuracy for speed
             {
                 return this.staticEvaluation(i_Board);
             }
 
-            if (this.maxingTurn((eTiles)i_Board.Turn))
+            if (this.maxingTurn(i_Board.Turn))
             {
                 int maxEvaluation = int.MinValue;
 
@@ -135,7 +135,7 @@ namespace Ex05
 
             if (i_Board.Status == eStatus.OLost)
             {
-                if ((eTiles)m_Board.Turn == eTiles.O)
+                if (m_Board.Turn == eTiles.O)
                 {
                     evaluation = int.MinValue;
                 }
@@ -146,7 +146,7 @@ namespace Ex05
             }
             else if (i_Board.Status == eStatus.XLost)
             {
-                if ((eTiles)m_Board.Turn == eTiles.O)
+                if (m_Board.Turn == eTiles.O)
                 {
                     evaluation = int.MaxValue;
                 }
@@ -323,7 +323,7 @@ namespace Ex05
 
         private bool maxingTurn(eTiles i_Tile)
         {
-            return (eTiles)m_Board.Turn == i_Tile;
+            return m_Board.Turn == i_Tile;
         }
     }
 }
