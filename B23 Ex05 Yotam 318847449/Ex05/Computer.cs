@@ -56,7 +56,7 @@ namespace Ex05
         {
             float state = this.calculatePrecentOfFullPositions();
 
-            if (state < 0.33)
+            if (state < 0.33 || m_Board.Size == 10)
             {
                 this.m_CandidateMoves.AddLast(this.tieBreak(m_Board.BoardPositionsToComputerPositions));
             }

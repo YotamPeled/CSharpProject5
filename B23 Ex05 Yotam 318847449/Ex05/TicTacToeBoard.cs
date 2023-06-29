@@ -15,7 +15,7 @@ namespace Ex05
         private Label m_Player2 = new Label();
         private Board m_Board;
         private List<TicTacToeButton> m_BoardButtonsList;
-        private const int k_ButtonSize = 100;
+        private const int k_ButtonSize = 80;
         bool m_HintWasJustUsed = false;
 
         public TicTacToeBoard()
@@ -69,7 +69,7 @@ namespace Ex05
         {
             initializeTicTacToeButtonsAndBoard(m_Board.Size);
             this.StartPosition = FormStartPosition.CenterScreen;
-            int boardHeight = k_ButtonSize * m_Board.Size;
+            int boardHeight = (k_ButtonSize + 10) * m_Board.Size - 5;
 
             m_ButtonHint = new Button
             {
@@ -148,9 +148,10 @@ namespace Ex05
 
         private void initializeTicTacToeButtonsAndBoard(int i_Size)
         {
-            int boardWidth = i_Size * k_ButtonSize + 20;
-            int boardHeight = i_Size * k_ButtonSize + 85;
-            this.ClientSize = new Size(boardWidth, boardHeight);
+            int spaceBetweenButtons = k_ButtonSize + 10;
+            int boardWidth = i_Size * spaceBetweenButtons+ 20;
+            int boardHeight = i_Size * spaceBetweenButtons + 85;
+            this.ClientSize = new Size(boardWidth - 10, boardHeight);
 
             for (int row = 0; row < i_Size; row++)
             {
@@ -158,7 +159,7 @@ namespace Ex05
                 {
                     TicTacToeButton boardButton = new TicTacToeButton(row, column);
                     boardButton.Size = new Size(k_ButtonSize, k_ButtonSize);
-                    boardButton.Location = new Point(column * k_ButtonSize + 10, row * k_ButtonSize + 10);
+                    boardButton.Location = new Point(column * spaceBetweenButtons + 10, row * spaceBetweenButtons + 10);
                     boardButton.Font = new Font(boardButton.Font.FontFamily, 20);
                     boardButton.Click += boardButton_Click;
                     boardButton.TabStop = false;
@@ -179,6 +180,7 @@ namespace Ex05
 
             if (m_Board.Opponent == eOpponent.Computer && m_Board.Turn == eTiles.O)
             {
+                this.Refresh();
                 m_Board.ComputerTurn();
             }
         }

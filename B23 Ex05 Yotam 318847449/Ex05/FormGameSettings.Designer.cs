@@ -109,12 +109,12 @@ namespace Ex05
             this.numericUpDownRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownRows.Location = new System.Drawing.Point(89, 180);
             this.numericUpDownRows.Maximum = new decimal(new int[] {
-            9,
+            10,
             0,
             0,
             0});
             this.numericUpDownRows.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -122,7 +122,7 @@ namespace Ex05
             this.numericUpDownRows.Size = new System.Drawing.Size(44, 45);
             this.numericUpDownRows.TabIndex = 7;
             this.numericUpDownRows.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -134,20 +134,20 @@ namespace Ex05
             this.numericUpDownCols.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownCols.Location = new System.Drawing.Point(210, 180);
             this.numericUpDownCols.Maximum = new decimal(new int[] {
-            9,
+            10,
             0,
             0,
             0});
             this.numericUpDownCols.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
             this.numericUpDownCols.Name = "numericUpDownCols";
-            this.numericUpDownCols.Size = new System.Drawing.Size(44, 45);
+            this.numericUpDownCols.Size = new System.Drawing.Size(43, 45);
             this.numericUpDownCols.TabIndex = 8;
             this.numericUpDownCols.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});

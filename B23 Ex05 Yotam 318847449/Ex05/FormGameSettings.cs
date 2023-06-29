@@ -12,6 +12,8 @@ namespace Ex05
 {
     public partial class FormGameSettings : Form
     {
+        private bool m_NumericUpDownIsWide = false;
+
         public string Player1Name
         {
             get
@@ -67,6 +69,18 @@ namespace Ex05
         private void numericUpDownRows_ValueChanged(object sender, EventArgs e)
         {
             numericUpDownCols.Value = numericUpDownRows.Value;
+            if((int)numericUpDownRows.Value == 10)
+            {
+                numericUpDownRows.Width = (int)(numericUpDownRows.Width * 1.35);
+                numericUpDownCols.Width = numericUpDownRows.Width;
+                m_NumericUpDownIsWide = true;
+            }
+            else if (m_NumericUpDownIsWide)
+            {
+                numericUpDownRows.Width = (int)(numericUpDownRows.Width / 1.35);
+                numericUpDownCols.Width = numericUpDownRows.Width;
+                m_NumericUpDownIsWide = false;
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
