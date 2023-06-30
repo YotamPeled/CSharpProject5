@@ -13,6 +13,7 @@ namespace Ex05
     public partial class FormGameSettings : Form
     {
         private bool m_NumericUpDownIsWide = false;
+        private TicTacToeBoard m_GameBoard = null;
 
         public string Player1Name
         {
@@ -85,12 +86,24 @@ namespace Ex05
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            TicTacToeBoard gameBoard = new TicTacToeBoard();
+            if (m_GameBoard == null)
+            {
+                m_GameBoard = new TicTacToeBoard();    
+            }
 
-            gameBoard.initialize(Player1Name, Player2Name, SelectedOpponent, SelectedBoardSize);
+            m_GameBoard.initialize(Player1Name, Player2Name, SelectedOpponent, SelectedBoardSize);
+
             this.Hide();
-            gameBoard.ShowDialog();
-            this.Close();
+            m_GameBoard.ShowDialog();
+            if (m_GameBoard.DialogResult == DialogResult.Retry)
+            {
+                this.textBoxPlayer1.Enabled = false;
+                this.textBoxPlayer2.Enabled = false;
+                this.checkBoxPlayer2.Enabled = false;     
+            }
+
+            this.DialogResult = m_GameBoard.DialogResult;
+            this.Close();      
         }
     }
 }

@@ -6,13 +6,32 @@ using System.Windows.Forms;
 
 namespace Ex05
 {
-    static class Program
+    internal class Program
     {
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGameSettings());
+
+            FormGameSettings formGameSettings = new FormGameSettings();
+
+            while (true)
+            {
+                formGameSettings.ShowDialog();
+
+                if (formGameSettings.DialogResult == DialogResult.Retry)
+                {
+                    continue;
+                }
+                else if (formGameSettings.DialogResult == DialogResult.Abort)
+                {
+                    formGameSettings = new FormGameSettings();
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 }

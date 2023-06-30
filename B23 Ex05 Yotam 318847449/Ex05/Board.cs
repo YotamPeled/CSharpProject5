@@ -11,7 +11,7 @@ namespace Ex05
         private LinkedList<BoardPosition> m_OPositions = new LinkedList<BoardPosition>();
         private LinkedList<BoardPosition> m_EmptyPositions = new LinkedList<BoardPosition>();
         private eTiles m_Turn = eTiles.X;
-        private readonly int r_Size;
+        private int m_Size;
         private int[,] m_Board;
         private int m_XScore = 0;
         private int m_OScore = 0;
@@ -106,17 +106,21 @@ namespace Ex05
 
         public Board(int i_Size)
         {
-            this.r_Size = i_Size;
-            this.m_Board = new int[r_Size, r_Size];
-            initializeBoard();
+            this.SetNewBoardSize(i_Size);
             m_Computer = new Computer(this);
         }
 
+        internal void SetNewBoardSize(int i_Size)
+        {
+            this.m_Size = i_Size;
+            this.m_Board = new int[m_Size, m_Size];
+            this.Restart();
+        }
         private void initializeBoard()
         {
-            for (int row = 0; row < r_Size; row++)
+            for (int row = 0; row < m_Size; row++)
             {
-                for (int column = 0; column < r_Size; column++)
+                for (int column = 0; column < m_Size; column++)
                 {
                     m_Board[row, column] = (int)eTiles.empty;
                     BoardPosition position = new BoardPosition(row, column);
@@ -194,7 +198,7 @@ namespace Ex05
         {
             get
             {
-                return r_Size;
+                return m_Size;
             }
         }
 
@@ -338,8 +342,8 @@ namespace Ex05
         private int spreadMatchFunction(int i_RowJumps, int i_ColumnJumps, BoardPosition i_Position, bool markPositionAsLost = false)
         {
             int isMatch = 0;
-            bool tileToCheckIsInBounds = i_Position.Row < r_Size && i_Position.Row >= 0 &&
-                                         i_Position.Column < r_Size && i_Position.Column >= 0;
+            bool tileToCheckIsInBounds = i_Position.Row < m_Size && i_Position.Row >= 0 &&
+                                         i_Position.Column < m_Size && i_Position.Column >= 0;
 
             if (tileToCheckIsInBounds)
             {
@@ -379,8 +383,8 @@ namespace Ex05
         {
             int returnedValue = 0;
             int isMatch = 0;
-            bool tileToCheckIsInBounds = i_Position.Row < r_Size && i_Position.Row >= 0 &&
-                                         i_Position.Column < r_Size && i_Position.Column >= 0;
+            bool tileToCheckIsInBounds = i_Position.Row < m_Size && i_Position.Row >= 0 &&
+                                         i_Position.Column < m_Size && i_Position.Column >= 0;
 
             if (tileToCheckIsInBounds)
             {
@@ -438,7 +442,7 @@ namespace Ex05
         {
             int matches = this.spreadMatchFunction((int)eDirections.None, (int)eDirections.Right, new BoardPosition(i_Position.Row, i_Position.Column + (int)eDirections.Right)) +
                           this.spreadMatchFunction((int)eDirections.None, (int)eDirections.Left, new BoardPosition(i_Position.Row, i_Position.Column + (int)eDirections.Left)) + 1; // +1 to include current tile
-            bool lose = matches >= r_Size;
+            bool lose = matches >= m_Size;
 
             if (lose) // mark eTiles for losing "animation"
             {
@@ -454,7 +458,7 @@ namespace Ex05
         {
             int matches = this.spreadMatchFunction((int)eDirections.Up, (int)eDirections.None, new BoardPosition(i_Position.Row + (int)eDirections.Up, i_Position.Column)) +
                           this.spreadMatchFunction((int)eDirections.Down, (int)eDirections.None, new BoardPosition(i_Position.Row + (int)eDirections.Down, i_Position.Column)) + 1;
-            bool lose = matches >= r_Size;
+            bool lose = matches >= m_Size;
 
             if (lose)
             {
@@ -470,7 +474,7 @@ namespace Ex05
         {
             int matches = this.spreadMatchFunction((int)eDirections.Down, (int)eDirections.Left, new BoardPosition(i_Position.Row + (int)eDirections.Down, i_Position.Column + (int)eDirections.Left)) +
                       this.spreadMatchFunction((int)eDirections.Up, (int)eDirections.Right, new BoardPosition(i_Position.Row + (int)eDirections.Up, i_Position.Column + (int)eDirections.Right)) + 1;
-            bool lose = matches >= r_Size;
+            bool lose = matches >= m_Size;
 
             if (lose)
             {
@@ -486,7 +490,7 @@ namespace Ex05
         {
             int matches = this.spreadMatchFunction((int)eDirections.Up, (int)eDirections.Left, new BoardPosition(i_Position.Row + (int)eDirections.Up, i_Position.Column + (int)eDirections.Left)) +
                           this.spreadMatchFunction((int)eDirections.Down, (int)eDirections.Right, new BoardPosition(i_Position.Row + (int)eDirections.Down, i_Position.Column + (int)eDirections.Right)) + 1;
-            bool lose = matches >= r_Size;
+            bool lose = matches >= m_Size;
 
             if (lose)
             {
@@ -558,7 +562,7 @@ namespace Ex05
         internal Board Copy(BoardPosition i_Position)
         {
             // Transfer a copied board with a a certain Position input, For computer Minimax calculations
-            Board copiedBoard = new Board(r_Size);
+            Board copiedBoard = new Board(m_Size);
             copiedBoard.m_Turn = m_Turn;
             copiedBoard.m_XScore = m_XScore;
             copiedBoard.m_OScore = m_OScore;
