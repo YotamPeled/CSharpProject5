@@ -8,3 +8,14 @@ D:\CSproj5\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.Co
 D:\CSproj5\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.exe
 D:\CSproj5\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.pdb
 D:\CSproj5\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.FormGameSettings.resources
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\bin\Debug\Ex05.exe.config
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\bin\Debug\Ex05.exe
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\bin\Debug\Ex05.pdb
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.AssemblyReference.cache
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.SuggestedBindingRedirects.cache
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.FormGameSettings.resources
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.Properties.Resources.resources
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.GenerateResource.cache
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.CoreCompileInputs.cache
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.exe
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.pdb

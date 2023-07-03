@@ -48,9 +48,10 @@ namespace Ex05
             // 
             this.labelPlayers.AutoSize = true;
             this.labelPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPlayers.Location = new System.Drawing.Point(22, 20);
+            this.labelPlayers.Location = new System.Drawing.Point(33, 31);
+            this.labelPlayers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPlayers.Name = "labelPlayers";
-            this.labelPlayers.Size = new System.Drawing.Size(60, 20);
+            this.labelPlayers.Size = new System.Drawing.Size(93, 29);
             this.labelPlayers.TabIndex = 0;
             this.labelPlayers.Text = "Players";
             // 
@@ -58,9 +59,10 @@ namespace Ex05
             // 
             this.labelPlayer1.AutoSize = true;
             this.labelPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPlayer1.Location = new System.Drawing.Point(45, 62);
+            this.labelPlayer1.Location = new System.Drawing.Point(68, 95);
+            this.labelPlayer1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPlayer1.Name = "labelPlayer1";
-            this.labelPlayer1.Size = new System.Drawing.Size(69, 20);
+            this.labelPlayer1.Size = new System.Drawing.Size(106, 29);
             this.labelPlayer1.TabIndex = 1;
             this.labelPlayer1.Text = "Player 1:";
             // 
@@ -68,9 +70,10 @@ namespace Ex05
             // 
             this.checkBoxPlayer2.AutoSize = true;
             this.checkBoxPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxPlayer2.Location = new System.Drawing.Point(49, 95);
+            this.checkBoxPlayer2.Location = new System.Drawing.Point(74, 146);
+            this.checkBoxPlayer2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxPlayer2.Name = "checkBoxPlayer2";
-            this.checkBoxPlayer2.Size = new System.Drawing.Size(84, 24);
+            this.checkBoxPlayer2.Size = new System.Drawing.Size(126, 33);
             this.checkBoxPlayer2.TabIndex = 3;
             this.checkBoxPlayer2.Text = "Player2:";
             this.checkBoxPlayer2.UseVisualStyleBackColor = true;
@@ -79,18 +82,20 @@ namespace Ex05
             // textBoxPlayer1
             // 
             this.textBoxPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPlayer1.Location = new System.Drawing.Point(142, 61);
+            this.textBoxPlayer1.Location = new System.Drawing.Point(213, 94);
+            this.textBoxPlayer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPlayer1.Name = "textBoxPlayer1";
-            this.textBoxPlayer1.Size = new System.Drawing.Size(121, 23);
+            this.textBoxPlayer1.Size = new System.Drawing.Size(180, 30);
             this.textBoxPlayer1.TabIndex = 4;
             // 
             // textBoxPlayer2
             // 
             this.textBoxPlayer2.Enabled = false;
             this.textBoxPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPlayer2.Location = new System.Drawing.Point(142, 95);
+            this.textBoxPlayer2.Location = new System.Drawing.Point(213, 146);
+            this.textBoxPlayer2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPlayer2.Name = "textBoxPlayer2";
-            this.textBoxPlayer2.Size = new System.Drawing.Size(121, 23);
+            this.textBoxPlayer2.Size = new System.Drawing.Size(180, 30);
             this.textBoxPlayer2.TabIndex = 5;
             this.textBoxPlayer2.Text = "Computer";
             // 
@@ -98,16 +103,18 @@ namespace Ex05
             // 
             this.labelBoardSize.AutoSize = true;
             this.labelBoardSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBoardSize.Location = new System.Drawing.Point(22, 148);
+            this.labelBoardSize.Location = new System.Drawing.Point(33, 228);
+            this.labelBoardSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBoardSize.Name = "labelBoardSize";
-            this.labelBoardSize.Size = new System.Drawing.Size(91, 20);
+            this.labelBoardSize.Size = new System.Drawing.Size(137, 29);
             this.labelBoardSize.TabIndex = 6;
             this.labelBoardSize.Text = "Board Size:";
             // 
             // numericUpDownRows
             // 
             this.numericUpDownRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownRows.Location = new System.Drawing.Point(89, 180);
+            this.numericUpDownRows.Location = new System.Drawing.Point(134, 277);
+            this.numericUpDownRows.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDownRows.Maximum = new decimal(new int[] {
             10,
             0,
@@ -119,7 +126,7 @@ namespace Ex05
             0,
             0});
             this.numericUpDownRows.Name = "numericUpDownRows";
-            this.numericUpDownRows.Size = new System.Drawing.Size(44, 45);
+            this.numericUpDownRows.Size = new System.Drawing.Size(66, 64);
             this.numericUpDownRows.TabIndex = 7;
             this.numericUpDownRows.Value = new decimal(new int[] {
             4,
@@ -130,9 +137,9 @@ namespace Ex05
             // 
             // numericUpDownCols
             // 
-            this.numericUpDownCols.Enabled = false;
             this.numericUpDownCols.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownCols.Location = new System.Drawing.Point(210, 180);
+            this.numericUpDownCols.Location = new System.Drawing.Point(315, 277);
+            this.numericUpDownCols.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDownCols.Maximum = new decimal(new int[] {
             10,
             0,
@@ -144,21 +151,23 @@ namespace Ex05
             0,
             0});
             this.numericUpDownCols.Name = "numericUpDownCols";
-            this.numericUpDownCols.Size = new System.Drawing.Size(43, 45);
+            this.numericUpDownCols.Size = new System.Drawing.Size(64, 64);
             this.numericUpDownCols.TabIndex = 8;
             this.numericUpDownCols.Value = new decimal(new int[] {
             4,
             0,
             0,
             0});
+            this.numericUpDownCols.ValueChanged += new System.EventHandler(this.numericUpDownCols_ValueChanged);
             // 
             // labelRows
             // 
             this.labelRows.AutoSize = true;
             this.labelRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRows.Location = new System.Drawing.Point(30, 197);
+            this.labelRows.Location = new System.Drawing.Point(45, 303);
+            this.labelRows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRows.Name = "labelRows";
-            this.labelRows.Size = new System.Drawing.Size(53, 20);
+            this.labelRows.Size = new System.Drawing.Size(80, 29);
             this.labelRows.TabIndex = 9;
             this.labelRows.Text = "Rows:";
             // 
@@ -166,9 +175,10 @@ namespace Ex05
             // 
             this.labelCols.AutoSize = true;
             this.labelCols.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCols.Location = new System.Drawing.Point(160, 197);
+            this.labelCols.Location = new System.Drawing.Point(240, 303);
+            this.labelCols.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCols.Name = "labelCols";
-            this.labelCols.Size = new System.Drawing.Size(44, 20);
+            this.labelCols.Size = new System.Drawing.Size(68, 29);
             this.labelCols.TabIndex = 10;
             this.labelCols.Text = "Cols:";
             // 
@@ -176,9 +186,10 @@ namespace Ex05
             // 
             this.buttonStart.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStart.Location = new System.Drawing.Point(12, 241);
+            this.buttonStart.Location = new System.Drawing.Point(18, 371);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(251, 33);
+            this.buttonStart.Size = new System.Drawing.Size(376, 51);
             this.buttonStart.TabIndex = 11;
             this.buttonStart.Text = "Start!";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -186,9 +197,9 @@ namespace Ex05
             // 
             // FormGameSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 286);
+            this.ClientSize = new System.Drawing.Size(412, 440);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.labelCols);
             this.Controls.Add(this.labelRows);
@@ -201,6 +212,7 @@ namespace Ex05
             this.Controls.Add(this.labelPlayer1);
             this.Controls.Add(this.labelPlayers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormGameSettings";

@@ -254,7 +254,7 @@ namespace Ex05
                 }
                 else if (button.BackColor == Color.LightBlue)
                 {
-                    button.BackColor = default(Color);
+                    button.BackColor = default;
                     matchClickedAndMostRecent++;
                 }
             }
@@ -398,9 +398,9 @@ Would you like to play another round?";
                 i_Button.Enabled = false;
             }
 
-            if (TileType != (int)eTiles.OLost && TileType != (int)eTiles.XLost)
+            if (TileType != (int)eTiles.OLost && TileType != (int)eTiles.XLost && i_Button.Enabled == true)
             {
-                i_Button.BackColor = default(Color);
+                i_Button.BackColor = Color.White;
             }
         }
 

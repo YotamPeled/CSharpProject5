@@ -70,7 +70,18 @@ namespace Ex05
         private void numericUpDownRows_ValueChanged(object sender, EventArgs e)
         {
             numericUpDownCols.Value = numericUpDownRows.Value;
-            if((int)numericUpDownRows.Value == 10)
+
+            resizeNumericUpDownAccordingToValue((int)numericUpDownRows.Value);
+        }
+
+        private void numericUpDownCols_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownRows.Value = numericUpDownCols.Value;
+        }
+
+        private void resizeNumericUpDownAccordingToValue(int i_Value)
+        {
+            if (i_Value == 10)
             {
                 numericUpDownRows.Width = (int)(numericUpDownRows.Width * 1.35);
                 numericUpDownCols.Width = numericUpDownRows.Width;
@@ -83,7 +94,6 @@ namespace Ex05
                 m_NumericUpDownIsWide = false;
             }
         }
-
         private void buttonStart_Click(object sender, EventArgs e)
         {
             if (m_GameBoard == null)
