@@ -84,6 +84,7 @@ namespace Ex05
             this.textBoxPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPlayer1.Location = new System.Drawing.Point(213, 94);
             this.textBoxPlayer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPlayer1.MaxLength = 10;
             this.textBoxPlayer1.Name = "textBoxPlayer1";
             this.textBoxPlayer1.Size = new System.Drawing.Size(180, 30);
             this.textBoxPlayer1.TabIndex = 4;
@@ -94,6 +95,7 @@ namespace Ex05
             this.textBoxPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPlayer2.Location = new System.Drawing.Point(213, 146);
             this.textBoxPlayer2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPlayer2.MaxLength = 10;
             this.textBoxPlayer2.Name = "textBoxPlayer2";
             this.textBoxPlayer2.Size = new System.Drawing.Size(180, 30);
             this.textBoxPlayer2.TabIndex = 5;

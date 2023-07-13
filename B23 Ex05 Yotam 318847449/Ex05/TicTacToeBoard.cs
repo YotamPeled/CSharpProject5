@@ -17,7 +17,11 @@ namespace Ex05
         private Label m_Player2 = new Label();
         private Board m_Board;
         private List<TicTacToeButton> m_BoardButtonsList;
-        private const int k_ButtonSize = 80;
+        private const int k_BoardWidth = 500;
+        private const int k_BoardHeight = 620;
+        private int m_ButtonSize;
+        private const int k_ButtonControlsWidth = 112;
+        private const int k_ButtonTicTacToeSpacing = 10;
         bool m_HintWasJustUsed = false;
         bool m_Initialized;
 
@@ -35,10 +39,11 @@ namespace Ex05
         }
         public TicTacToeBoard()
         {
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "TicTacToeMisere";
+            this.Width = k_BoardWidth;
+            this.Height = k_BoardHeight;
         }
 
 
@@ -71,7 +76,10 @@ namespace Ex05
             {
                 m_Board.SetNewBoardSize(i_BoardSize);
             }
-            m_Board.Opponent = i_Opponent;             
+
+            int rowWidthWithoutSpacing = this.Width - ((i_BoardSize + 1) * k_ButtonTicTacToeSpacing);
+            m_ButtonSize = rowWidthWithoutSpacing / i_BoardSize;
+            m_Board.Opponent = i_Opponent;
         }
 
         public void initialize(string i_Player1Name, string i_Player2Name, eOpponent i_Opponent, int i_BoardSize)
@@ -96,12 +104,12 @@ namespace Ex05
         {
             initializeTicTacToeButtonsAndBoard(m_Board.Size);
             this.StartPosition = FormStartPosition.CenterScreen;
-            int boardHeight = (k_ButtonSize + 10) * m_Board.Size - 5;
+            int boardHeight = (m_ButtonSize + 10) * m_Board.Size - 5;
 
             m_ButtonHint = new Button
             {
                 Text = "Hint",
-                Size = new Size(k_ButtonSize, 30),
+                Size = new Size(k_ButtonControlsWidth, 30),
                 Location = new Point(10, boardHeight + 15),
                 TabStop = false               
             };
@@ -109,7 +117,7 @@ namespace Ex05
             m_ButtonChangeStartingPlayer = new Button
             {
                 Text = "Change Starting Player",
-                Size = new Size(k_ButtonSize * 3, 30),
+                Size = new Size(k_ButtonControlsWidth * 3, 30),
                 Location = new Point(10, boardHeight + 50),
                 TabStop = false
             };
@@ -117,27 +125,27 @@ namespace Ex05
             m_ButtonChangeSize = new Button
             {
                 Text = "Change Size",
-                Size = new Size(k_ButtonSize - 10, 40),
-                Location = new Point(m_BoardButtonsList[m_Board.Size - 1].Left + 5, m_ButtonHint.Location.Y - 7),
+                Size = new Size(k_ButtonControlsWidth - 10, 40),
+                Location = new Point(m_ButtonChangeStartingPlayer.Right + 25, m_ButtonHint.Location.Y - 7),
                 TabStop = false
             };
 
             m_ButtonNewGame = new Button
             {
                 Text = "New Game",
-                Size = new Size(k_ButtonSize - 10, 40),
-                Location = new Point(m_BoardButtonsList[m_Board.Size - 1].Left + 5, m_ButtonChangeStartingPlayer.Location.Y - 2),
+                Size = new Size(k_ButtonControlsWidth - 10, 40),
+                Location = new Point(m_ButtonChangeSize.Left, m_ButtonChangeStartingPlayer.Location.Y - 2),
                 TabStop = false
             };
 
             m_Player1.Name = "player1";
             m_Player1.AutoSize = true;
-            m_Player1.Width = k_ButtonSize;
+            m_Player1.Width = k_ButtonControlsWidth;
             m_Player1.Location = new Point(m_ButtonHint.Right + 10, boardHeight + 23);
 
             m_Player2.Name = m_Board.Opponent == eOpponent.Friend ? "player2" : "Computer";
             m_Player2.AutoSize = true;
-            m_Player2.Width = k_ButtonSize;
+            m_Player2.Width = k_ButtonControlsWidth;
             m_Player2.Location = new Point(m_Player1.Right, boardHeight + 23);
             
             if (m_Board.Opponent == eOpponent.Friend)
@@ -201,18 +209,15 @@ namespace Ex05
 
         private void initializeTicTacToeButtonsAndBoard(int i_Size)
         {
-            int spaceBetweenButtons = k_ButtonSize + 10;
-            int boardWidth = i_Size * spaceBetweenButtons+ 20;
-            int boardHeight = i_Size * spaceBetweenButtons + 85;
-            this.ClientSize = new Size(boardWidth - 10, boardHeight);
+            int spaceBetweenButtons = m_ButtonSize + k_ButtonTicTacToeSpacing;
 
             for (int row = 0; row < i_Size; row++)
             {
                 for (int column = 0; column < i_Size; column++)
                 {
                     TicTacToeButton boardButton = new TicTacToeButton(row, column);
-                    boardButton.Size = new Size(k_ButtonSize, k_ButtonSize);
-                    boardButton.Location = new Point(column * spaceBetweenButtons + 10, row * spaceBetweenButtons + 10);
+                    boardButton.Size = new Size(m_ButtonSize, m_ButtonSize);
+                    boardButton.Location = new Point(column * spaceBetweenButtons + 2, row * spaceBetweenButtons + 5);
                     boardButton.Font = new Font(boardButton.Font.FontFamily, 20);
                     boardButton.Click += tictactoeButton_Click;
                     boardButton.TabStop = false;
