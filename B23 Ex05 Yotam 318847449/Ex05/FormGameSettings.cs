@@ -13,7 +13,7 @@ namespace Ex05
     public partial class FormGameSettings : Form
     {
         private bool m_NumericUpDownIsWide = false;
-        private TicTacToeBoard m_GameBoard = null;
+        private FormTicTacToeBoard m_GameBoard = null;
 
         public string Player1Name
         {
@@ -98,7 +98,7 @@ namespace Ex05
         {
             if (m_GameBoard == null)
             {
-                m_GameBoard = new TicTacToeBoard();    
+                m_GameBoard = new FormTicTacToeBoard();    
             }
 
             m_GameBoard.initialize(Player1Name, Player2Name, SelectedOpponent, SelectedBoardSize);

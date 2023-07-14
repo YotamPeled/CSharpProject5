@@ -29,6 +29,7 @@ namespace Ex05
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGameSettings));
             this.labelPlayers = new System.Windows.Forms.Label();
             this.labelPlayer1 = new System.Windows.Forms.Label();
             this.checkBoxPlayer2 = new System.Windows.Forms.CheckBox();
@@ -213,7 +214,9 @@ namespace Ex05
             this.Controls.Add(this.checkBoxPlayer2);
             this.Controls.Add(this.labelPlayer1);
             this.Controls.Add(this.labelPlayers);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

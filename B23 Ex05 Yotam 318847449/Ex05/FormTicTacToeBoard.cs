@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Ex05
 {
-    class TicTacToeBoard : Form
+    class FormTicTacToeBoard : Form
     {
         private Button m_ButtonNewGame;
         private Button m_ButtonChangeSize;
@@ -16,7 +16,7 @@ namespace Ex05
         private Label m_Player1 = new Label();
         private Label m_Player2 = new Label();
         private Board m_Board;
-        private List<TicTacToeButton> m_BoardButtonsList;
+        private List<ButtonGameTile> m_BoardButtonsList;
         private const int k_BoardWidth = 500;
         private const int k_BoardHeight = 620;
         private int m_ButtonSize;
@@ -37,8 +37,9 @@ namespace Ex05
                 return m_Board;
             }
         }
-        public TicTacToeBoard()
+        public FormTicTacToeBoard()
         {
+            this.InitializeComponent();
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "TicTacToeMisere";
@@ -85,10 +86,9 @@ namespace Ex05
         public void initialize(string i_Player1Name, string i_Player2Name, eOpponent i_Opponent, int i_BoardSize)
         {
             this.Controls.Clear();
-
             setGameSpecifications(i_Player1Name, i_Player2Name, i_Opponent, i_BoardSize);
 
-            m_BoardButtonsList = new List<TicTacToeButton>(m_Board.Size);
+            m_BoardButtonsList = new List<ButtonGameTile>(m_Board.Size);
 
             if (!m_Initialized)
             {
@@ -215,7 +215,7 @@ namespace Ex05
             {
                 for (int column = 0; column < i_Size; column++)
                 {
-                    TicTacToeButton boardButton = new TicTacToeButton(row, column);
+                    ButtonGameTile boardButton = new ButtonGameTile(row, column);
                     boardButton.Size = new Size(m_ButtonSize, m_ButtonSize);
                     boardButton.Location = new Point(column * spaceBetweenButtons + 2, row * spaceBetweenButtons + 5);
                     boardButton.Font = new Font(boardButton.Font.FontFamily, 20);
@@ -233,7 +233,7 @@ namespace Ex05
             m_ButtonChangeStartingPlayer.Enabled = false;
             m_ButtonChangeSize.Enabled = false;
 
-            BoardPosition buttonPosition = (sender as TicTacToeButton).Position;
+            BoardPosition buttonPosition = (sender as ButtonGameTile).Position;
 
             m_Board.DoWhenButtonWasClicked(buttonPosition);
 
@@ -248,7 +248,7 @@ namespace Ex05
         {
             int matchClickedAndMostRecent = 0;
 
-            foreach(TicTacToeButton button in m_BoardButtonsList)
+            foreach(ButtonGameTile button in m_BoardButtonsList)
             {
                 if (button.Position.Equals(i_Position))
                 {
@@ -278,7 +278,7 @@ namespace Ex05
 
         private void m_BoardButtonList_HighlightHintPosition(BoardPosition i_Position)
         {
-            foreach (TicTacToeButton button in m_BoardButtonsList)
+            foreach (ButtonGameTile button in m_BoardButtonsList)
             {
                 if (button.Position.Equals(i_Position))
                 {
@@ -371,7 +371,7 @@ Would you like to play another round?";
             m_Player2.Text = $@"{m_Player2Name}: {m_Board.OScore}";
         }
 
-        private void setButtonVisuals(TicTacToeButton i_Button)
+        private void setButtonVisuals(ButtonGameTile i_Button)
         {
             int TileType = m_Board.BoardState[i_Button.Position.Row, i_Button.Position.Column];
 
@@ -411,10 +411,24 @@ Would you like to play another round?";
 
         private void updateVisualsForEntireBoard()
         {
-            foreach (TicTacToeButton button in m_BoardButtonsList)
+            foreach (ButtonGameTile button in m_BoardButtonsList)
             {
                 setButtonVisuals(button);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTicTacToeBoard));
+            this.SuspendLayout();
+            // 
+            // FormTicTacToeBoard
+            // 
+            this.ClientSize = new System.Drawing.Size(278, 244);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormTicTacToeBoard";
+            this.ResumeLayout(false);
+
         }
     }
 }

@@ -59,14 +59,17 @@
     <Compile Include="ProjectEnums.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicTacToeBoard.cs">
+    <Compile Include="FormTicTacToeBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TicTacToeButton.cs">
+    <Compile Include="ButtonGameTile.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="FormGameSettings.resx">
       <DependentUpon>FormGameSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTicTacToeBoard.resx">
+      <DependentUpon>FormTicTacToeBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\%24this.Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

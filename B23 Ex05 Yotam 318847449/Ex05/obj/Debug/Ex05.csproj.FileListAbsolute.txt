@@ -19,3 +19,4 @@ C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.Gener
 C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.csproj.CoreCompileInputs.cache
 C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.exe
 C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.pdb
+C:\Ex03\CSharpProject5\B23 Ex05 Yotam 318847449\Ex05\obj\Debug\Ex05.FormTicTacToeBoard.resources

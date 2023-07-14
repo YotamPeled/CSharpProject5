@@ -2,7 +2,7 @@
 
 namespace Ex05
 {
-    internal class TicTacToeButton : Button
+    internal class ButtonGameTile : Button
     {
         BoardPosition m_Position;
         internal BoardPosition Position 
@@ -13,7 +13,7 @@ namespace Ex05
             }
         }
 
-        internal TicTacToeButton(int i_Row, int i_Column) : base()
+        internal ButtonGameTile(int i_Row, int i_Column) : base()
         {
             m_Position = new BoardPosition(i_Row, i_Column);
         }
